@@ -1,0 +1,6 @@
+*.txt
+dictLabels.pkl
+*.pyc
+*.cpkt
+*.meta
+.DS_Store
