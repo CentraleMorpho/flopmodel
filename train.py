@@ -19,11 +19,11 @@ def train(lr=0.0001,
 		logits = model.inference_vgg(images, False, training=True)
 		objectiveGT = model.loss_op(logits, labels, batch_size)
 		
-		accuracy = model.evaluate10(logits, labels)
+		accuracy = model.evaluate(logits, labels, 0.05555555)
 		
 		logitsVal = model.inference_vgg(imagesVal, True, training=False)
 		objectiveGTVal = model.loss_op(logitsVal, labelsVal, batch_size)
-		accuracyVal = model.evaluate5(logitsVal, labelsVal)
+		accuracyVal = model.evaluate(logitsVal, labelsVal, 0.0277778)
 
 		###########################
 		#FLOP

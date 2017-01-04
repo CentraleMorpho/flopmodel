@@ -50,56 +50,20 @@ def loss_op(logits, labels, batch_size):
 
 
 
-def evaluate5(logits, labels):
+def evaluate(logits, labels, accuracy):
     # Return probabilities of yau, pitch, roll being less than 5 degrees
     yauDeltas = tf.abs(logits[:,0]-labels[:,0])
-    yauAcc = tf.less_equal(yauDeltas, 0.0277778)
+    yauAcc = tf.less_equal(yauDeltas, accuracy)
     yauAcc = tf.reduce_sum(tf.cast(yauAcc, tf.float32))
     yauAcc = yauAcc/tf.to_float(labels.get_shape()[0])
 
     pitchDeltas = tf.abs(logits[:,1]-labels[:,1])
-    pitchAcc = tf.less_equal(pitchDeltas, 0.0277778)
+    pitchAcc = tf.less_equal(pitchDeltas, accuracy)
     pitchAcc = tf.reduce_sum(tf.cast(pitchAcc, tf.float32))
     pitchAcc = pitchAcc/tf.to_float(labels.get_shape()[0])
 
     rollDeltas = tf.abs(logits[:,2]-labels[:,2])
-    rollAcc = tf.less_equal(rollDeltas, 0.0277778)
-    rollAcc = tf.reduce_sum(tf.cast(rollAcc, tf.float32))
-    rollAcc = rollAcc/tf.to_float(labels.get_shape()[0])
-    return yauAcc, pitchAcc, rollAcc
-	
-def evaluate10(logits, labels):
-    # Return probabilities of yau, pitch, roll being less than 10 degrees
-    yauDeltas = tf.abs(logits[:,0]-labels[:,0])
-    yauAcc = tf.less_equal(yauDeltas, 0.05555555)
-    yauAcc = tf.reduce_sum(tf.cast(yauAcc, tf.float32))
-    yauAcc = yauAcc/tf.to_float(labels.get_shape()[0])
-
-    pitchDeltas = tf.abs(logits[:,1]-labels[:,1])
-    pitchAcc = tf.less_equal(pitchDeltas, 0.05555555)
-    pitchAcc = tf.reduce_sum(tf.cast(pitchAcc, tf.float32))
-    pitchAcc = pitchAcc/tf.to_float(labels.get_shape()[0])
-
-    rollDeltas = tf.abs(logits[:,2]-labels[:,2])
-    rollAcc = tf.less_equal(rollDeltas, 0.05555555)
-    rollAcc = tf.reduce_sum(tf.cast(rollAcc, tf.float32))
-    rollAcc = rollAcc/tf.to_float(labels.get_shape()[0])
-    return yauAcc, pitchAcc, rollAcc
-	
-def evaluate20(logits, labels):
-    # Return probabilities of yau, pitch, roll being less than 20 degrees
-    yauDeltas = tf.abs(logits[:,0]-labels[:,0])
-    yauAcc = tf.less_equal(yauDeltas, 0.1111111)
-    yauAcc = tf.reduce_sum(tf.cast(yauAcc, tf.float32))
-    yauAcc = yauAcc/tf.to_float(labels.get_shape()[0])
-
-    pitchDeltas = tf.abs(logits[:,1]-labels[:,1])
-    pitchAcc = tf.less_equal(pitchDeltas, 0.1111111)
-    pitchAcc = tf.reduce_sum(tf.cast(pitchAcc, tf.float32))
-    pitchAcc = pitchAcc/tf.to_float(labels.get_shape()[0])
-
-    rollDeltas = tf.abs(logits[:,2]-labels[:,2])
-    rollAcc = tf.less_equal(rollDeltas, 0.1111111)
+    rollAcc = tf.less_equal(rollDeltas, accuracy)
     rollAcc = tf.reduce_sum(tf.cast(rollAcc, tf.float32))
     rollAcc = rollAcc/tf.to_float(labels.get_shape()[0])
     return yauAcc, pitchAcc, rollAcc
