@@ -13,9 +13,9 @@ def test(nb_iterations=1013,
 
 		imagesVal, labelsVal = model.distorted_inputs('test', batch_size)
 		logitsVal = model.inference_vgg(imagesVal, False, training=False)
-		accuracyVal = model.evaluate(logitsVal, labelsVal, 0.0277778)
-		accuracy10Val = model.evaluate(logitsVal, labelsVal, 0.05555555)
-		accuracy20Val = model.evaluate(logitsVal, labelsVal, 0.1111111)
+		accuracyVal = model.evaluate(logitsVal, labelsVal, 5.)
+		accuracy10Val = model.evaluate(logitsVal, labelsVal, 10.)
+		accuracy20Val = model.evaluate(logitsVal, labelsVal, 20.)
 		
 		accuracys5 = np.zeros([1,3], dtype=float) # Calculate mean of accuracys
 		accuracys10 = np.zeros([1,3], dtype=float) 
