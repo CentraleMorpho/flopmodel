@@ -12,8 +12,7 @@ def createDictFromLabelsFile():
 			i=0
 			for line in f:
 				path = line.split(' ')[0]
-				if(path.split('/')[0]=='020' | path.split('/')[0]=='022'):
-					# | path.split('/')[0]=='014b'
+				if(path.split('/')[0]=='020' or path.split('/')[0]=='022' or path.split('/')[0]=='014b'):
 					path = os.path.join("../Cropped",path)
 					dico[path]=[float(line.split(' ')[1]),float(line.split(' ')[2]),float(line.split(' ')[3])]
 				print(i)

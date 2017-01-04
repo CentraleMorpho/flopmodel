@@ -4,21 +4,17 @@ import math
 
 
 def getImagesPathsFromLabelsFile():
-	posesFile = '/mnt/SSD/stagiaire/VisagePoseEstimation/Img/Cropped/024_poseonly_normalised180.txt'
+	#posesFile = '/mnt/SSD/stagiaire/VisagePoseEstimation/Img/Cropped/024_poseonly_normalised180.txt'
+	posesFile = '../Cropped/024_poseonly_normalised180.txt'
 	listPaths = []
 	
 	with open(posesFile,'r') as f:
 			i=0
 			for line in f:
 				path = line.split(' ')[0]
-				if(path.split('/')[0]=='020'):
-					path = os.path.join("/mnt/SSD/stagiaire/VisagePoseEstimation/Img/Cropped",path)
-					listPaths.append(path)
-				elif(path.split('/')[0]=='022'):
-					path = os.path.join("/mnt/SSD/stagiaire/VisagePoseEstimation/Img/Cropped",path)
-					listPaths.append(path)
-				elif(path.split('/')[0]=='014b'):
-					path = os.path.join("/mnt/SSD/stagiaire/VisagePoseEstimation/Img/Cropped",path)
+				if(path.split('/')[0]=='020' or path.split('/')[0]=='022' or path.split('/')[0]=='014b'):
+					#path = os.path.join("/mnt/SSD/stagiaire/VisagePoseEstimation/Img/Cropped",path)
+					path = os.path.join("../Cropped",path)
 					listPaths.append(path)
 				print(i)
 				i=i+1
