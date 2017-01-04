@@ -52,6 +52,7 @@ def loss_op(logits, labels, batch_size):
 
 def evaluate(logits, labels, accuracy):
     # Return probabilities of yau, pitch, roll being less than 5 degrees
+    angle = accuracy/180
     yauDeltas = tf.abs(logits[:,0]-labels[:,0])
     yauAcc = tf.less_equal(yauDeltas, accuracy)
     yauAcc = tf.reduce_sum(tf.cast(yauAcc, tf.float32))
